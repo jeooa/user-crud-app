@@ -41,7 +41,7 @@
                     <span class="text-gray-500 text-sm">{{ u.email }}</span>
                   </div>
                   <div class="flex items-center gap-2">
-                    <button 
+                    <button   
                       @click="editUser(u)"
                       class="bg-gray-800 text-white px-4 py-1.5 rounded-md hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 text-sm"
                     >
