@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -52,6 +51,11 @@ app.delete('/users/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
+});
+
+// Default root route to avoid "Cannot GET /"
+app.get('/', (req, res) => {
+    res.send('API is running. Use /users endpoint to interact with users.');
 });
 
 app.listen(port, '0.0.0.0', () => {
