@@ -67,6 +67,8 @@
 <script>
 import axios from 'axios';
 
+const API_BASE = 'https://crudapp-381q.onrender.com'; // <-- Use your actual backend URL
+
 export default {
   data() {
     return {
@@ -76,14 +78,14 @@ export default {
   },
   methods: {
     async fetchUsers() {
-      const res = await axios.get('http://localhost:3000/users');
+      const res = await axios.get(`${API_BASE}/users`);
       this.users = res.data;
     },
     async submitUser() {
       if (this.user.id) {
-        await axios.put(`http://localhost:3000/users/${this.user.id}`, this.user);
+        await axios.put(`${API_BASE}/users/${this.user.id}`, this.user);
       } else {
-        await axios.post('http://localhost:3000/users', this.user);
+        await axios.post(`${API_BASE}/users`, this.user);
       }
       this.user = { id: null, name: '', email: '' };
       this.fetchUsers();
@@ -92,7 +94,7 @@ export default {
       this.user = { ...user };
     },
     async deleteUser(id) {
-      await axios.delete(`http://localhost:3000/users/${id}`);
+      await axios.delete(`${API_BASE}/users/${id}`);
       this.fetchUsers();
     }
   },
@@ -101,3 +103,4 @@ export default {
   }
 };
 </script>
+
